@@ -76,7 +76,7 @@ const ProductScreen = ({ history, match }) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-          <Meta title={product.name} />
+          <Meta title="Tagline Traders" />
           <Row>
             <Col md={6}>
               <Image src={product.image} alt={product.name} fluid />

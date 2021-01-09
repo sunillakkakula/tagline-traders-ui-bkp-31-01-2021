@@ -25,6 +25,16 @@ const Header = () => {
         collapseOnSelect
       >
         <Container>
+          {
+            <img
+              src="./images/logo.jpg"
+              alt="..."
+              width="50px"
+              height="50px"
+              className="img-thumbnail"
+              style={{ marginRight: "30px" }}
+            ></img>
+          }
           <LinkContainer to="/">
             <Navbar.Brand>Tagline Traders</Navbar.Brand>
           </LinkContainer>
