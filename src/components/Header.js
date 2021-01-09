@@ -18,7 +18,12 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+      <Navbar
+        style={{ background: "#800000" }}
+        variant="dark"
+        expand="lg"
+        collapseOnSelect
+      >
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand>Tagline Traders</Navbar.Brand>
