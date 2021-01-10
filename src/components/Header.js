@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown, Image } from "react-bootstrap";
 import SearchBox from "./SearchBox";
 import { logout } from "../actions/userAction";
 
@@ -15,7 +15,7 @@ const Header = () => {
   const logoutHandler = () => {
     dispatch(logout());
   };
-
+  const imgPath = "./logo.jpg";
   return (
     <header>
       <Navbar
@@ -25,16 +25,14 @@ const Header = () => {
         collapseOnSelect
       >
         <Container>
-          {
-            <img
-              src="./images/logo.jpg"
-              alt="..."
-              width="50px"
-              height="50px"
-              className="img-thumbnail"
-              style={{ marginRight: "30px" }}
-            ></img>
-          }
+          <img
+            src={imgPath}
+            alt="...img path"
+            width="50px"
+            height="50px"
+            className="img-thumbnail"
+            style={{ marginRight: "30px" }}
+          ></img>
           <LinkContainer to="/">
             <Navbar.Brand>Tagline Traders</Navbar.Brand>
           </LinkContainer>
