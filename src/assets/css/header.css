@@ -1,0 +1,41 @@
+.searchInputContainer {
+    width: 560px;
+    position: relative;
+    background: #fff;
+    height: 36px;
+    border-radius: 1px;
+    overflow: hidden;
+    display: flex;
+  }
+.searchInput {
+    width: 518px;
+    border: 0;
+    height: 36px;
+    outline: none;
+    box-sizing: border-box;
+    padding: 0 10px;
+  }
+.searchIconContainer {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+  }
+  .rightMenu{
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+  }
+.loginButton {
+    display: block;
+    width: 100px;
+    height: 30px;
+    background: #fff;
+    text-align: center;
+    line-height: 30px;
+    color: #2874f0;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+  }

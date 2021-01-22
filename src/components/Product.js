@@ -1,30 +1,66 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card } from "react-bootstrap";
-import Rating from "./Rating";
+import { Card, Row } from "react-bootstrap";
+import { Button } from "@material-ui/core";
+import { BiRupee } from "react-icons/bi";
 
 const Product = ({ product }) => {
   return (
-    <Card className="my-3 p-3 rounded">
+    <Card
+      className="my-1 p-1 rounded"
+      style={{
+        maxWidth: "18rem",
+        maxHeight: "16rem",
+        boxShadow: "0 1px 1px rgba(0,0,0,.4)",
+      }}
+    >
       <Link to={`/product/${product._id}`}>
-        <Card.Img src={product.image} variant="top" />
+        <Card.Img
+          src={product.image}
+          variant="top"
+          style={{
+            maxWidth: "6em",
+            maxHeight: "7em",
+            marginLeft: "5em",
+
+            alignContent: "center",
+          }}
+        />
       </Link>
 
       <Card.Body>
         <Link to={`/product/${product._id}`}>
           <Card.Title as="div">
-            <strong>{product.name}</strong>
+            <Row>
+              <strong>{product.name}</strong>
+              <strong style={{ marginLeft: "2.5em" }}>
+                <BiRupee />
+                {product.price}
+              </strong>
+            </Row>
           </Card.Title>
         </Link>
-
-        <Card.Text as="div">
-          <Rating
-            value={product.rating}
-            text={`${product.numReviews} reviews`}
-          />
-        </Card.Text>
-
-        <Card.Text as="h3">INR {product.price}</Card.Text>
+        <Row>
+          <Button
+            variant="contained"
+            disabled
+            className="d-flex align-items-start"
+            style={{
+              marginLeft: "2em",
+            }}
+          >
+            1 kg
+          </Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            style={{
+              marginLeft: "0.5em",
+            }}
+          >
+            Add
+          </Button>
+        </Row>
       </Card.Body>
     </Card>
   );

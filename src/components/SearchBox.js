@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { IoIosSearch } from "react-icons/io";
 
 const SearchBox = ({ history }) => {
   const [keyword, setKeyword] = useState("");
@@ -14,23 +15,46 @@ const SearchBox = ({ history }) => {
   };
 
   return (
+    //  <input
+    //               className={classes.searchInput}
+    //               placeholder={"search for products, brands and more"}
+    //             />
+    //             <div className={classes.searchIconContainer}>
+    //               <IoIosSearch
+    //                 style={{
+    //                   color: "#2874f0",
+    //                 }}
+    //               />
+    //             </div>
     <Form onSubmit={submitHandler} inline>
       <Form.Control
         type="text"
+        style={{
+          width: "518px",
+          border: "0",
+          height: "36px",
+          outline: "none",
+          boxSizing: "border-box",
+          padding: "0 10px",
+        }}
         name="q"
         onChange={(e) => setKeyword(e.target.value)}
         placeholder="Search Products...."
-        // className="mr-sm-2 ml-sm-5"
       ></Form.Control>
-      <Button
-        type="submit"
-        variant="primary"
-        // variant="outline-success"
-        className="btn btn-light my-3"
-        // style={{ background: "blue", color: "white" }}
+      <div
+        style={{
+          display: "flex",
+          flex: "1",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
-        Search
-      </Button>
+        <IoIosSearch
+          style={{
+            color: "#2874f0",
+          }}
+        ></IoIosSearch>
+      </div>
     </Form>
   );
 };
