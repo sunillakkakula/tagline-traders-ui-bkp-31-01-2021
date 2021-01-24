@@ -72,7 +72,6 @@ const App = () => {
             <Route path="/" component={DashboardScreen} exact />
           </Container>
         </main>
-        <Footer />
       </Router>
     </ThemeProvider>
   );

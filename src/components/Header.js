@@ -19,6 +19,7 @@ import { Button } from "@material-ui/core";
 import MoreTippy from "../screens/MoreTippy";
 import { light } from "@material-ui/core/styles/createPalette";
 import logo from "../assets/logo.jpg";
+import ZipCodeTracker from "./ZipCodeTracker";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -199,35 +200,18 @@ const Header = (props) => {
                   </b>
                 </span>
               </LinkContainer>
-              <div className={classes.searchInputContainer}>
+              {/* <div className={classes.searchInputContainer}>
                 <Route
                   render={({ history }) => <SearchBox history={history} />}
                 />
-              </div>
+              </div> */}
 
               <div className={classes.grow} />
 
               {/* right side menu */}
               <div className="_2yTL60" style={{ marginLeft: "5em" }}>
-                <svg
-                  width="12"
-                  height="16"
-                  viewBox="0 0 9 12"
-                  className=""
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill="#2874f0"
-                    className="_2xEPr8"
-                    d="M4.2 5.7c-.828 0-1.5-.672-1.5-1.5 0-.398.158-.78.44-1.06.28-.282.662-.44 1.06-.44.828 0 1.5.672 1.5 1.5 0 .398-.158.78-.44 1.06-.28.282-.662.44-1.06.44zm0-5.7C1.88 0 0 1.88 0 4.2 0 7.35 4.2 12 4.2 12s4.2-4.65 4.2-7.8C8.4 1.88 6.52 0 4.2 0z"
-                    fillRule="evenodd"
-                  ></path>
-                </svg>
-                <div className="_1psGvi _3w81sF">
-                  <div>
-                    <div className="_8Phu0v">Delivery to 500049</div>
-                  </div>
-                </div>
+                <ZipCodeTracker />
+
                 <div style={{ justifyContent: "space-around" }}>
                   {/* <svg
                     width="4.7"

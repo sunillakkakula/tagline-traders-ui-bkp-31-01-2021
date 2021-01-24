@@ -121,7 +121,7 @@ const DropdownMenu = (props) => {
                 {/**
                  * Below a  needs to be remove and replaced with Link Tag
                  */}
-                <a
+                <div
                   onClick={(e) => {
                     if (item.onClick) {
                       e.preventDefault();
@@ -131,7 +131,7 @@ const DropdownMenu = (props) => {
                   href={`${item.href}`}
                 >
                   {item.label}
-                </a>
+                </div>
               </li>
             ))}
         </ul>
