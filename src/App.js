@@ -22,7 +22,6 @@ import SubMenuHeader from "./components/SubMenuHeader";
 import { ThemeProvider } from "@material-ui/core";
 import theme from "./components/Theme";
 import DashboardScreen from "./screens/DashboardScreen";
-// import CategoriesMenu from "./components/CategoriesMenu";
 
 const App = () => {
   return (
@@ -32,7 +31,7 @@ const App = () => {
         <Container>
           <SubMenuHeader />
         </Container>
-        {/* <CategoriesMenu /> */}
+
         <main className="py-3">
           <Container>
             <Route path="/order/:id" component={OrderScreen} />

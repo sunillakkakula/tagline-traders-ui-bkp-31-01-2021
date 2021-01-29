@@ -15,6 +15,7 @@ import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
 } from "../constants/orderConstants";
+import { BiRupee } from "react-icons/bi";
 
 const OrderScreen = ({ match, history }) => {
   const orderId = match.params.id;
@@ -155,7 +156,14 @@ const OrderScreen = ({ match, history }) => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x INR {item.price} = INR{" "}
+                          {item.qty} x{" "}
+                          <span style={{ position: "absolute", right: "1px" }}>
+                            <BiRupee />
+                          </span>{" "}
+                          {item.price} ={" "}
+                          <span style={{ position: "absolute", right: "1px" }}>
+                            <BiRupee />
+                          </span>{" "}
                           {item.qty * item.price}
                         </Col>
                       </Row>
@@ -175,25 +183,45 @@ const OrderScreen = ({ match, history }) => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>INR {order.itemsPrice}</Col>
+                  <Col>
+                    <span style={{ position: "absolute", right: "1px" }}>
+                      <BiRupee />
+                    </span>{" "}
+                    {order.itemsPrice}
+                  </Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>INR {order.shippingPrice}</Col>
+                  <Col>
+                    <span style={{ position: "absolute", right: "1px" }}>
+                      <BiRupee />
+                    </span>{" "}
+                    {order.shippingPrice}
+                  </Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>INR {order.taxPrice}</Col>
+                  <Col>
+                    <span style={{ position: "absolute", right: "1px" }}>
+                      <BiRupee />
+                    </span>{" "}
+                    {order.taxPrice}
+                  </Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
-                  <Col>INR {order.totalPrice}</Col>
+                  <Col>
+                    <span style={{ position: "absolute", right: "1px" }}>
+                      <BiRupee />
+                    </span>{" "}
+                    {order.totalPrice}
+                  </Col>
                 </Row>
               </ListGroup.Item>
               {!order.isPaid && (

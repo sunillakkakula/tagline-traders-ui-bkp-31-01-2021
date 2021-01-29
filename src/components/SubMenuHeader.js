@@ -30,55 +30,112 @@ const SubMenuHeader = () => {
             <div className="_37M3Pb">
               <div
                 className="eFQ30H"
-                data-tkid="M_cac3f597-4795-46b1-855d-8f1527f4ee4e_2_TD249NVPLJWU_MC.OOAD39GV6T5N"
+                data-tkid="M_cac3f597-4795-46b1-855d-8f1527f4ee4e_2_TD249NVPLJWU_MC.Z59MBD3MYEZK"
               >
-                <>
-                  <div className="_1mkliO">
-                    <div
-                      className="CXW8mj"
-                      style={{ height: "64px", width: "64px" }}
-                    >
-                      <img
-                        alt="Staples"
-                        className="_396cs4 _3exPp9"
-                        src="./Staples.jpg"
-                      ></img>
-                    </div>
-                  </div>
-                  <div className="_1psGvi SLyWEo">
-                    <DropdownMenu
-                      className={classes.groceries}
-                      menu={
-                        <span>
-                          Staples
-                          <IoIosArrowDown />
-                        </span>
-                      }
-                      menus={[
-                        {
-                          label: "Dals & Pulses",
-                          href: "",
-                          icon: null,
-                        },
-                        { label: "Ghee & Oils", href: "", icon: null },
-                        { label: "Atta & Flours", href: "", icon: null },
-                        { label: "Rice & Rice Products", href: "", icon: null },
-                        {
-                          label: "Dry Fruits, Nuts & Seeds",
-                          href: "",
-                          icon: null,
-                        },
-                        {
-                          label: "Sugar, Jaggery & Salt",
-                          href: "",
-                          icon: null,
-                        },
-                      ]}
+                <div className="_1mkliO">
+                  <div
+                    className="CXW8mj"
+                    style={{ height: "64px", width: "64px" }}
+                  >
+                    <img
+                      className="_396cs4 _3exPp9"
+                      alt="Staples"
+                      src="/Staples.jpg"
                     />
                   </div>
-                </>
+                </div>
+                <div className="_1psGvi SLyWEo">
+                  <div>
+                    <div className="xtXmba">
+                      Packaged Food
+                      <svg
+                        width="5"
+                        height="8"
+                        viewBox="0 0 16 27"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="_2sVfI7"
+                      >
+                        <path
+                          d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"
+                          fill="#fff"
+                          className="_1zrN4q"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div
+                className="eFQ30H"
+                data-tkid="M_cac3f597-4795-46b1-855d-8f1527f4ee4e_2_TD249NVPLJWU_MC.Z59MBD3MYEZK"
+              >
+                <div className="_1mkliO">
+                  <div
+                    className="CXW8mj"
+                    style={{ height: "64px", width: "64px" }}
+                  >
+                    <img
+                      className="_396cs4 _3exPp9"
+                      alt="Snacks - Beverages"
+                      src="/Snacks-Beverages.jpg"
+                    />
+                  </div>
+                </div>
+                <div className="_1psGvi SLyWEo">
+                  <div>
+                    <div className="xtXmba"></div>
+                  </div>
+                  <DropdownMenu
+                    className={classes.groceries}
+                    menu={
+                      <span>
+                        Snacks & Beverages
+                        <IoIosArrowDown />
+                      </span>
+                    }
+                    menus={[
+                      {
+                        label: "Biscuits",
+                        href: "",
+                        icon: null,
+                      },
+                      {
+                        label: "Chips,Namkeen & Snacks",
+                        href: "",
+                        icon: null,
+                      },
+                      { label: "Tea", href: "", icon: null },
+
+                      {
+                        label: "Coffee",
+                        href: "",
+                        icon: null,
+                      },
+                      {
+                        label: "Juices",
+                        href: "",
+                        icon: null,
+                      },
+                      {
+                        label: "Health Drink Mix",
+                        href: "",
+                        icon: null,
+                      },
+                      {
+                        label: "Soft Drinks",
+                        href: "",
+                        icon: null,
+                      },
+                      {
+                        label: "Water",
+                        href: "",
+                        icon: null,
+                      },
+                    ]}
+                  />
+                </div>
+              </div>
+              {/* <div
                 className="eFQ30H"
                 data-tkid="M_cac3f597-4795-46b1-855d-8f1527f4ee4e_2_TD249NVPLJWU_MC.HI2REO8H1YPI"
               >
@@ -104,14 +161,6 @@ const SubMenuHeader = () => {
                           <IoIosArrowDown />
                         </span>
                       }
-                      //                       Chips,Namkeen & Snacks
-                      // Tea
-                      // Coffee
-                      // Juices
-                      // Health Drink Mix
-                      // Soft Drinks
-                      // Instant Drink Mixes, Squash & Syrups
-                      // Water
                       menus={[
                         {
                           label: "Biscuits",
@@ -124,7 +173,7 @@ const SubMenuHeader = () => {
                           icon: null,
                         },
                         { label: "Tea", href: "", icon: null },
-                      
+
                         {
                           label: "Coffee",
                           href: "",
@@ -154,162 +203,154 @@ const SubMenuHeader = () => {
                     />
                   </div>
                 </>
-              </div>
+              </div> */}
               <div
                 className="eFQ30H"
                 data-tkid="M_cac3f597-4795-46b1-855d-8f1527f4ee4e_2_TD249NVPLJWU_MC.Z59MBD3MYEZK"
               >
-                <a>
-                  <div className="_1mkliO">
-                    <div
-                      className="CXW8mj"
-                      style={{ height: "64px", width: "64px" }}
-                    >
-                      <img
-                        className="_396cs4 _3exPp9"
-                        alt="Packaged Food"
-                        src="/Packaged-Food.jpg"
-                      />
+                <div className="_1mkliO">
+                  <div
+                    className="CXW8mj"
+                    style={{ height: "64px", width: "64px" }}
+                  >
+                    <img
+                      className="_396cs4 _3exPp9"
+                      alt="Packaged Food"
+                      src="/Packaged-Food.jpg"
+                    />
+                  </div>
+                </div>
+                <div className="_1psGvi SLyWEo">
+                  <div>
+                    <div className="xtXmba">
+                      Packaged Food
+                      <svg
+                        width="5"
+                        height="8"
+                        viewBox="0 0 16 27"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="_2sVfI7"
+                      >
+                        <path
+                          d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"
+                          fill="#fff"
+                          className="_1zrN4q"
+                        ></path>
+                      </svg>
                     </div>
                   </div>
-                  <div className="_1psGvi SLyWEo">
-                    <div>
-                      <div className="xtXmba">
-                        Packaged Food
-                        <svg
-                          width="5"
-                          height="8"
-                          viewBox="0 0 16 27"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="_2sVfI7"
-                        >
-                          <path
-                            d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"
-                            fill="#fff"
-                            className="_1zrN4q"
-                          ></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                </div>
               </div>
               <div
                 className="eFQ30H"
                 data-tkid="M_cac3f597-4795-46b1-855d-8f1527f4ee4e_2_TD249NVPLJWU_MC.VGFMBXS1MB2C"
               >
-                <a>
-                  <div className="_1mkliO">
-                    <div
-                      className="CXW8mj"
-                      style={{ height: "64px", width: "64px" }}
-                    >
-                      <img
-                        className="_396cs4 _3exPp9"
-                        alt="Personal &amp;  Baby Care"
-                        src="/Baby-Care.jpg  "
-                      />
+                <div className="_1mkliO">
+                  <div
+                    className="CXW8mj"
+                    style={{ height: "64px", width: "64px" }}
+                  >
+                    <img
+                      className="_396cs4 _3exPp9"
+                      alt="Personal &amp;  Baby Care"
+                      src="/Baby-Care.jpg  "
+                    />
+                  </div>
+                </div>
+                <div className="_1psGvi SLyWEo">
+                  <div>
+                    <div className="xtXmba">
+                      Personal &amp; Baby Care
+                      <svg
+                        width="5"
+                        height="8"
+                        viewBox="0 0 16 27"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="_2sVfI7"
+                      >
+                        <path
+                          d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"
+                          fill="#fff"
+                          className="_1zrN4q"
+                        ></path>
+                      </svg>
                     </div>
                   </div>
-                  <div className="_1psGvi SLyWEo">
-                    <div>
-                      <div className="xtXmba">
-                        Personal &amp; Baby Care
-                        <svg
-                          width="5"
-                          height="8"
-                          viewBox="0 0 16 27"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="_2sVfI7"
-                        >
-                          <path
-                            d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"
-                            fill="#fff"
-                            className="_1zrN4q"
-                          ></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                </div>
               </div>
               <div
                 className="eFQ30H"
-                data-tkid="M_cac3f597-4795-46b1-855d-8f1527f4ee4e_2_TD249NVPLJWU_MC.OUQMJF6PPXSH"
+                data-tkid="M_cac3f597-4795-46b1-855d-8f1527f4ee4e_2_TD249NVPLJWU_MC.Z59MBD3MYEZK"
               >
-                <a>
-                  <div className="_1mkliO">
-                    <div
-                      className="CXW8mj"
-                      style={{ height: "64px", width: "64px" }}
-                    >
-                      <img
-                        className="_396cs4 _3exPp9"
-                        alt="Household Care"
-                        src="./Household-Care.jpg"
-                      />
+                <div className="_1mkliO">
+                  <div
+                    className="CXW8mj"
+                    style={{ height: "64px", width: "64px" }}
+                  >
+                    <img
+                      className="_396cs4 _3exPp9"
+                      alt="Snacks - Beverages"
+                      src="/Household-Care.jpg"
+                    />
+                  </div>
+                </div>
+                <div className="_1psGvi SLyWEo">
+                  <div>
+                    <div className="xtXmba">
+                      Household Care
+                      <svg
+                        width="5"
+                        height="8"
+                        viewBox="0 0 16 27"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="_2sVfI7"
+                      >
+                        <path
+                          d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"
+                          fill="#fff"
+                          className="_1zrN4q"
+                        ></path>
+                      </svg>
                     </div>
                   </div>
-                  <div className="_1psGvi SLyWEo">
-                    <div>
-                      <div className="xtXmba">
-                        Household Care
-                        <svg
-                          width="5"
-                          height="8"
-                          viewBox="0 0 16 27"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="_2sVfI7"
-                        >
-                          <path
-                            d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"
-                            fill="#fff"
-                            className="_1zrN4q"
-                          ></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                </div>
               </div>
               <div
                 className="eFQ30H"
-                data-tkid="M_cac3f597-4795-46b1-855d-8f1527f4ee4e_2_TD249NVPLJWU_MC.HYZETGSVBU43"
+                data-tkid="M_cac3f597-4795-46b1-855d-8f1527f4ee4e_2_TD249NVPLJWU_MC.Z59MBD3MYEZK"
               >
-                <a>
-                  <div className="_1mkliO">
-                    <div
-                      className="CXW8mj"
-                      style={{ height: "64px", width: "64px" }}
-                    >
-                      <img
-                        className="_396cs4 _3exPp9"
-                        alt="Dairy &amp; Eggs"
-                        src="./Dairy-Eggs.jpg"
-                      />
+                <div className="_1mkliO">
+                  <div
+                    className="CXW8mj"
+                    style={{ height: "64px", width: "64px" }}
+                  >
+                    <img
+                      className="_396cs4 _3exPp9"
+                      alt="Dairy - Eggs"
+                      src="/Dairy-Eggs.jpg"
+                    />
+                  </div>
+                </div>
+                <div className="_1psGvi SLyWEo">
+                  <div>
+                    <div className="xtXmba">
+                      Dairy - Eggs
+                      <svg
+                        width="5"
+                        height="8"
+                        viewBox="0 0 16 27"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="_2sVfI7"
+                      >
+                        <path
+                          d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"
+                          fill="#fff"
+                          className="_1zrN4q"
+                        ></path>
+                      </svg>
                     </div>
                   </div>
-                  <div className="_1psGvi SLyWEo">
-                    <div>
-                      <div className="xtXmba">
-                        Dairy &amp; Eggs
-                        <svg
-                          width="5"
-                          height="8"
-                          viewBox="0 0 16 27"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="_2sVfI7"
-                        >
-                          <path
-                            d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"
-                            fill="#fff"
-                            className="_1zrN4q"
-                          ></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                </div>
               </div>
             </div>
           </div>

@@ -50,7 +50,9 @@ const ZipCodeTracker = () => {
       >
         <RoomOutlinedIcon />
         <b>
-          <div id="zip_code" style={{ fontSize: "0.85rem" }}></div>
+          <div id="zip_code" style={{ fontSize: "0.85rem" }}>
+            Search city
+          </div>
         </b>
       </IconButton>
     </div>

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Form, Button, Col } from "react-bootstrap";
+import { Form, Button, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { savePaymentMethod } from "../actions/cartAction";
+import { Link } from "react-router-dom";
 
 const PaymentScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart);
@@ -26,7 +27,24 @@ const PaymentScreen = ({ history }) => {
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 step3 />
+      <Row>
+        <Link
+          style={{
+            color: "white",
+            backgroundColor: "#26A541",
+            marginLeft: "1rem",
+            marginBottom: "1rem",
+          }}
+          className="btn"
+          to="/home"
+        >
+          <b>
+            <div style={{ fontSize: "0.85rem" }}>Go to Supermarket</div>
+          </b>
+        </Link>
+      </Row>
       <h1>Payment Method</h1>
+
       <Form onSubmit={submitHandler}>
         <Form.Group>
           <Form.Label as="legend">Select Method</Form.Label>

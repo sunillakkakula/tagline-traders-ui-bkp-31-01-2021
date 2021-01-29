@@ -19,6 +19,7 @@ import {
   createProductReview,
 } from "../actions/productAction";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
+import { BiRupee } from "react-icons/bi";
 
 const ProductScreen = ({ history, match }) => {
   const [qty, setQty] = useState(1);
@@ -67,9 +68,6 @@ const ProductScreen = ({ history, match }) => {
 
   return (
     <>
-      <Link className="btn btn-light my-3" to="/">
-        Go Back
-      </Link>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -77,6 +75,30 @@ const ProductScreen = ({ history, match }) => {
       ) : (
         <>
           <Meta title="Tagline Traders" />
+          <Row>
+            <div
+              style={{
+                display: "flex",
+                marginRight: "-15px",
+                marginLeft: "15px",
+                marginBottom: "30px",
+              }}
+            >
+              <Link
+                style={{
+                  color: "white",
+                  backgroundColor: "#26A541",
+                  margingBottom: "5rem",
+                }}
+                className="btn"
+                to="/home"
+              >
+                <b>
+                  <div style={{ fontSize: "0.85rem" }}>Go to Supermarket</div>
+                </b>
+              </Link>
+            </div>
+          </Row>
           <Row>
             <Col md={6}>
               <Image src={product.image} alt={product.name} fluid />
@@ -92,68 +114,72 @@ const ProductScreen = ({ history, match }) => {
                     text={`${product.numReviews} reviews`}
                   />
                 </ListGroup.Item>
-                <ListGroup.Item>Price: INR {product.price}</ListGroup.Item>
+                <ListGroup.Item>
+                  Price:{" "}
+                  <span style={{ position: "absolute", right: "5px" }}>
+                    <BiRupee />
+                    {product.price}
+                  </span>{" "}
+                  {product.price}
+                </ListGroup.Item>
                 <ListGroup.Item>
                   Description: {product.description}
                 </ListGroup.Item>
               </ListGroup>
             </Col>
             <Col md={3}>
-              <Card>
-                <ListGroup variant="flush">
-                  <ListGroup.Item>
-                    <Row>
-                      <Col>Price:</Col>
-                      <Col>
-                        <strong>INR {product.price}</strong>
-                      </Col>
-                    </Row>
-                  </ListGroup.Item>
+              {/* <Card> */}
+              <ListGroup variant="flush">
+                <ListGroup.Item>
+                  <Col>Price:</Col>
+                  <Col>
+                    <strong>
+                      <span style={{ position: "absolute", right: "5px" }}>
+                        <BiRupee />
+                      </span>{" "}
+                      {product.price}
+                    </strong>
+                  </Col>
+                </ListGroup.Item>
 
-                  <ListGroup.Item>
-                    <Row>
-                      <Col>Status:</Col>
-                      <Col>
-                        {product.countInStock > 0 ? "In Stock" : "Out Of Stock"}
-                      </Col>
-                    </Row>
-                  </ListGroup.Item>
+                <ListGroup.Item>
+                  <Col>Status:</Col>
+                  <Col>
+                    {product.countInStock > 0 ? "In Stock" : "Out Of Stock"}
+                  </Col>
+                </ListGroup.Item>
 
-                  {product.countInStock > 0 && (
-                    <ListGroup.Item>
-                      <Row>
-                        <Col>Qty</Col>
-                        <Col>
-                          <Form.Control
-                            as="select"
-                            value={qty}
-                            onChange={(e) => setQty(e.target.value)}
-                          >
-                            {[...Array(product.countInStock).keys()].map(
-                              (x) => (
-                                <option key={x + 1} value={x + 1}>
-                                  {x + 1}
-                                </option>
-                              )
-                            )}
-                          </Form.Control>
-                        </Col>
-                      </Row>
-                    </ListGroup.Item>
-                  )}
-
+                {product.countInStock > 0 && (
                   <ListGroup.Item>
-                    <Button
-                      onClick={addToCartHandler}
-                      className="btn-block"
-                      type="button"
-                      disabled={product.countInStock === 0}
-                    >
-                      Add To Cart
-                    </Button>
+                    <Col>Qty</Col>
+                    <Col>
+                      <Form.Control
+                        as="select"
+                        value={qty}
+                        onChange={(e) => setQty(e.target.value)}
+                      >
+                        {[...Array(product.countInStock).keys()].map((x) => (
+                          <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        ))}
+                      </Form.Control>
+                    </Col>
                   </ListGroup.Item>
-                </ListGroup>
-              </Card>
+                )}
+
+                <ListGroup.Item>
+                  <Button
+                    onClick={addToCartHandler}
+                    className="btn-block"
+                    type="button"
+                    disabled={product.countInStock === 0}
+                  >
+                    Add To Cart
+                  </Button>
+                </ListGroup.Item>
+              </ListGroup>
+              {/* </Card> */}
             </Col>
           </Row>
           <Row>

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import Product from "./Product";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productAction";
@@ -22,13 +22,13 @@ const Home = () => {
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <Row>
+        <>
           {products.map((prd) => (
-            <Col key={prd._id} sm={12} md={6} lg={4} xl={3}>
+            <Col key={prd._id}>
               <Product product={prd} />
             </Col>
           ))}
-        </Row>
+        </>
       )}
     </div>
   );

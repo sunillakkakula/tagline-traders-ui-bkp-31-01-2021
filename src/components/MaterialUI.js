@@ -104,10 +104,7 @@ const MaterialButton = (props) => {
 };
 
 const DropdownMenu = (props) => {
-  console.log("props.menu : " + props.menu);
-  console.log(props.menu);
-  console.log("props.firstMenu : " + props.firstMenu);
-  console.log(props.firstMenu);
+ 
   return (
     <div className="headerDropdownContainer">
       {props.menu}

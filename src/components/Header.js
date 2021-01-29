@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -18,6 +18,8 @@ import Tippy from "@tippyjs/react";
 import { Button } from "@material-ui/core";
 import MoreTippy from "../screens/MoreTippy";
 import { light } from "@material-ui/core/styles/createPalette";
+import { Modal, MaterialInput, MaterialButton } from "./MaterialUI";
+// import "./Header.css";
 import logo from "../assets/logo.jpg";
 import ZipCodeTracker from "./ZipCodeTracker";
 
@@ -49,98 +51,11 @@ const useStyles = makeStyles((theme) => ({
       width: "auto",
     },
   },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  inputRoot: {
-    color: "inherit",
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
-  sectionDesktop: {
-    display: "none",
-    [theme.breakpoints.up("md")]: {
-      display: "flex",
-    },
-  },
-  sectionMobile: {
-    display: "flex",
-    [theme.breakpoints.up("md")]: {
-      display: "none",
-    },
-  },
-  searchInputContainer: {
-    width: "560px",
-    position: "relative",
-    background: "#fff",
-    height: "36px",
-    borderRadius: "1px",
-    overflow: "hidden",
-    display: "flex",
-    marginLeft: "4vh",
-  },
-  searchInput: {
-    width: "518px",
-    border: "0",
-    height: "36px",
-    outline: "none",
-    boxSizing: "border-box",
-    padding: "0 10px",
-  },
-  searchIconContainer: {
-    display: "flex",
-    flex: "1",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  rightMenu: {
-    display: "flex",
-    flex: "auto",
-    marginRight: "10em",
-    justifyContent: "flex-end",
-    alignItems: "center",
-  },
-  loginButton: {
-    display: "block",
-    width: "100px",
-    height: "30px",
-    background: "#fff",
-    textAlign: "center",
-    lineHeight: "30px",
-    color: "#2874f0",
-    fontWeight: "500",
-    fontSize: "16px",
-    cursor: "pointer",
-  },
-  more: {
-    fontWeight: "bold",
-    color: "#fff",
-    display: "flex",
-    alignItems: "center",
-    margin: "0 20px",
-    cursor: "pointer",
-  },
 }));
 
 function ElevationScroll(props) {
   const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
+
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
@@ -166,13 +81,200 @@ const Header = (props) => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-
+  const [loginModal, setLoginModal] = useState(false);
+  const [signup, setSignup] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const logoutHandler = () => {
     dispatch(logout());
+  };
+  const renderLoggedInMenu = () => {
+    return (
+      <DropdownMenu
+        menu={<a className="fullName">{userInfo.user}</a>}
+        menus={[
+          { label: "My Profile", href: "", icon: null },
+          { label: "SuperCoin Zone", href: "", icon: null },
+          { label: "Flipkart Plus Zone", href: "", icon: null },
+          {
+            label: "Orders",
+            href: `/account/orders`,
+            icon: null,
+          },
+          { label: "Wishlist", href: "", icon: null },
+          { label: "My Chats", href: "", icon: null },
+          { label: "Coupons", href: "", icon: null },
+          { label: "Rewards", href: "", icon: null },
+          { label: "Notifications", href: "", icon: null },
+          { label: "Gift Cards", href: "", icon: null },
+          { label: "Logout", href: "", icon: null, onClick: logout },
+        ]}
+      />
+    );
+  };
+
+  const renderNonLoggedInMenu = () => {
+    return (
+      <DropdownMenu
+        menu={
+          <a
+            className="loginButton"
+            onClick={() => {
+              setSignup(false);
+              setLoginModal(true);
+            }}
+          >
+            Login
+          </a>
+        }
+        menus={[
+          { label: "My Profile", href: "", icon: null },
+          { label: "Flipkart Plus Zone", href: "", icon: null },
+          {
+            label: "Orders",
+            href: `/account/orders`,
+            icon: null,
+            onClick: () => {
+              !userInfo && setLoginModal(true);
+            },
+          },
+          { label: "Wishlist", href: "", icon: null },
+          { label: "Rewards", href: "", icon: null },
+          { label: "Gift Cards", href: "", icon: null },
+        ]}
+        firstMenu={
+          <div className="firstmenu">
+            <span>New Customer?</span>
+            <a
+              onClick={() => {
+                setLoginModal(true);
+                setSignup(true);
+              }}
+              style={{ color: "#2874f0" }}
+            >
+              Sign Up
+            </a>
+          </div>
+        }
+      />
+    );
   };
 
   return (
     <React.Fragment>
+      <Modal visible={loginModal} onClose={() => setLoginModal(false)}>
+        <div
+          style={{
+            color: "#212121",
+            margin: "0 auto",
+            borderRadius: "2px",
+            height: "528px",
+            maxWidth: "750px",
+            minWidth: "650px",
+            zIndex: "1000",
+          }}
+        >
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              flexFlow: "row wrap",
+              height: "528px",
+              maxWidth: "750px",
+              minWidth: "650px",
+            }}
+          >
+            <div
+              style={{
+                width: "40%",
+                height: "100%",
+                color: "#fff",
+                letterSpacing: "1px",
+                // background-image: url('../assets/logo.jpg');
+                backgroundImage: "url('../assets/logo.jpg')",
+                backgroundColor: "#26A541",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center 85%",
+                padding: "40px 33px",
+                boxSizing: "border-box",
+              }}
+            >
+              <h2>Login</h2>
+              <p>Get access to your Orders, Wishlist and Recommendations</p>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flex: "1",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <div
+                style={{
+                  width: "100%",
+                  boxSizing: "border-box",
+                  padding: "0 30px",
+                  margin: "40px 0",
+                }}
+              >
+                {userInfo && (
+                  <div style={{ color: "red", fontSize: 12 }}>{userInfo}</div>
+                )}
+                {signup && (
+                  <MaterialInput
+                    type="text"
+                    label="First Name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                )}
+                {signup && (
+                  <MaterialInput
+                    type="text"
+                    label="Last Name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                )}
+
+                <MaterialInput
+                  type="text"
+                  label="Email/Mobile Number"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <MaterialInput
+                  type="password"
+                  label="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <MaterialButton
+                  title={signup ? "Register" : "Login"}
+                  bgColor="#fb641b"
+                  textColor="#ffffff"
+                  style={{
+                    margin: "40px 0 20px 0",
+                  }}
+                  onClick={userLogin}
+                />
+                <p style={{ textAlign: "center" }}>OR</p>
+                <MaterialButton
+                  title="Request OTP"
+                  bgColor="#ffffff"
+                  textColor="#2874f0"
+                  style={{
+                    margin: "20px 0",
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
       <CssBaseline />
       <ElevationScroll {...props}>
         <Container fluid="true">
@@ -211,38 +313,14 @@ const Header = (props) => {
               {/* right side menu */}
               <div className="_2yTL60" style={{ marginLeft: "5em" }}>
                 <ZipCodeTracker />
-
-                <div style={{ justifyContent: "space-around" }}>
-                  {/* <svg
-                    width="4.7"
-                    height="8"
-                    viewBox="0 0 16 27"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="_2Dwidy"
-                  >
-                    <path
-                      d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z"
-                      fill="#fff"
-                      className="_1O_n_j"
-                    ></path>
-                  </svg> */}
-
-                  {/* <Tippy
-                    content={<MoreTippy />}
-                    theme="light"
-                    interactive={true}
-                    visible={true}
-                    offset={[5, 18]}
-                  >
-                    <span>More</span>
-                  </Tippy> */}
-                </div>
+                {userInfo ? renderLoggedInMenu() : renderNonLoggedInMenu()}
+                <div style={{ justifyContent: "space-around" }}></div>
                 <DropdownMenu
                   menu={
-                    <a className={classes.more}>
+                    <div className={classes.more}>
                       <span>More</span>
                       <IoIosArrowDown />
-                    </a>
+                    </div>
                   }
                   menus={[
                     { label: "Notification Preference", href: "", icon: null },

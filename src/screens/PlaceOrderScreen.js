@@ -7,6 +7,7 @@ import CheckoutSteps from "../components/CheckoutSteps";
 import { createOrder } from "../actions/orderAction";
 import { ORDER_CREATE_RESET } from "../constants/orderConstants";
 import { USER_DETAILS_RESET } from "../constants/userConstants";
+import { BiRupee } from "react-icons/bi";
 
 const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -64,6 +65,22 @@ const PlaceOrderScreen = ({ history }) => {
     <>
       <CheckoutSteps step1 step2 step3 step4 />
       <Row>
+        <Link
+          style={{
+            color: "white",
+            backgroundColor: "#26A541",
+            marginLeft: "1rem",
+            marginBottom: "1rem",
+          }}
+          className="btn"
+          to="/home"
+        >
+          <b>
+            <div style={{ fontSize: "0.85rem" }}>Go to Supermarket</div>
+          </b>
+        </Link>
+      </Row>
+      <Row>
         <Col md={8}>
           <ListGroup variant="flush">
             <ListGroup.Item>
@@ -90,25 +107,23 @@ const PlaceOrderScreen = ({ history }) => {
                 <ListGroup variant="flush">
                   {cart.cartItems.map((item, index) => (
                     <ListGroup.Item key={index}>
-                      <Row>
-                        <Col md={1}>
-                          <Image
-                            src={item.image}
-                            alt={item.name}
-                            fluid
-                            rounded
-                          />
-                        </Col>
-                        <Col>
-                          <Link to={`/product/${item.product}`}>
-                            {item.name}
-                          </Link>
-                        </Col>
-                        <Col md={4}>
-                          {item.qty} x INR {item.price} = INR{" "}
-                          {item.qty * item.price}
-                        </Col>
-                      </Row>
+                      <Col md={1}>
+                        <Image src={item.image} alt={item.name} fluid rounded />
+                      </Col>
+                      <Col>
+                        <Link to={`/product/${item.product}`}>{item.name}</Link>
+                      </Col>
+                      <Col md={4}>
+                        {item.qty} x {item.price}{" "}
+                        <span style={{ position: "absolute", right: "1px" }}>
+                          <BiRupee />
+                        </span>{" "}
+                        ={" "}
+                        <span style={{ position: "absolute", right: "1px" }}>
+                          <BiRupee />
+                        </span>
+                        {item.qty * item.price}
+                      </Col>
                     </ListGroup.Item>
                   ))}
                 </ListGroup>
@@ -123,27 +138,48 @@ const PlaceOrderScreen = ({ history }) => {
                 <h2>Order Summary</h2>
               </ListGroup.Item>
               <ListGroup.Item>
-                <Row>
+                <>
                   <Col>Items</Col>
-                  <Col>INR {cart.itemsPrice}</Col>
-                </Row>
+                  <Col>
+                    <span style={{ position: "absolute", right: "1px" }}>
+                      <BiRupee />
+                    </span>{" "}
+                    {cart.itemsPrice}
+                  </Col>
+                  {/* </Row> */}
+                </>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>{cart.shippingPrice}</Col>
+                  <Col>
+                    <span style={{ position: "absolute", right: "1px" }}>
+                      <BiRupee />
+                    </span>
+                    {cart.shippingPrice}
+                  </Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>{cart.taxPrice}</Col>
+                  <Col>
+                    <span style={{ position: "absolute", right: "1px" }}>
+                      <BiRupee />
+                    </span>
+                    {cart.taxPrice}
+                  </Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
-                  <Col>INR {cart.totalPrice}</Col>
+                  <Col>
+                    <span style={{ position: "absolute", right: "1px" }}>
+                      <BiRupee />
+                    </span>{" "}
+                    {cart.totalPrice}
+                  </Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>

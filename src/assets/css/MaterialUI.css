@@ -21,12 +21,14 @@
     border-radius: 4px;
     margin: 0 auto;
     overflow-x: hidden;
+    margin-top:10em;
 }
 .modalClose{
     position: absolute;
     color: #fff;
     right: 15px;
     font-size: 20px;
+    margin-top:7em;
 }
 
 /* Material Input */
