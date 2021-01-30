@@ -309,7 +309,11 @@ const Header = (props) => {
               </div> */}
 
               <div className={classes.grow} />
-
+              {/* <div className="_2yTL60" style={{ marginLeft: "5em" }}>
+                <Tippy content={<MoreTippy />} interactive={true}>
+                  <Button>More</Button>
+                </Tippy>
+              </div> */}
               {/* right side menu */}
               <div className="_2yTL60" style={{ marginLeft: "5em" }}>
                 <ZipCodeTracker />

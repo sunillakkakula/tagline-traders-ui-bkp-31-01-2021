@@ -36,22 +36,21 @@ const useStyles = makeStyles((theme) => ({
 
 const ProductDetailsScreen = (prd) => {
   const { product } = prd;
-  const [qty, setQty] = useState(1);
-  const [counter, setCounter] = useState(0);
-  const [orderTypeSelected, setOrderTypeSelected] = useState("loose");
-  let orderInput = "";
+  let [qty, setQty] = useState(1);
+  let [counter, setCounter] = useState(0);
+  let [orderTypeSelected, setOrderTypeSelected] = useState("loose");
+  let [isBulkOrder, setIsBulkOrder] = useState(false);
+  useEffect(() => {
+    console.log("Exec Use Effect as order Type is Chnaged");
+    setOrderTypeSelected(orderTypeSelected);
+  }, [orderTypeSelected]);
   const handleIncrement = () => {
     setCounter(counter + 1);
-    // this.setState((state) => ({ counter: state.counter + 1 }));
   };
 
   const handleDecrement = () => {
     setCounter(counter - 1);
-    // this.setState((state) => ({ counter: state.counter - 1 }));
   };
-  // const productDetails = useSelector((state) => state.productDetails);
-  // const { loading, error, product } = productDetails;
-  // dispatch(listProductDetails(productDetails.product._id));
 
   const addToCartHandler = () => {
     // history.push(`/cart/${prd._id}?qty=${prd.qty}`);
@@ -60,53 +59,71 @@ const ProductDetailsScreen = (prd) => {
   const submitHandler = (e) => {
     e.preventDefault();
   };
-  const looseBtnGroup = (
-    <ButtonGroup
-      style={{ size: "small" }}
-      className="small outlined button group"
-      aria-label="small outlined button group"
-    >
-      {<Button onClick={handleDecrement}>-</Button>}
-      {<Button disabled>{counter}</Button>}
-      <Button onClick={handleIncrement}>+</Button>
-    </ButtonGroup>
-  );
-  const bulkTextField = (
-    <Form.Control
-      as="select"
-      value={qty}
-      onChange={(e) => setQty(e.target.value)}
-    >
-      {[...Array(product.countInStock).keys()].map((x) => (
-        <option key={x + 1} value={x + 1}>
-          {x + 1}
-        </option>
-      ))}
-    </Form.Control>
-  );
+
+  const renderQtyUI = ({ isBulkOrder, qty }) => {
+    if (orderTypeSelected === "b") {
+      console.log(" IS BULK ORDER so return UI for that" + orderTypeSelected);
+
+      return (
+        <Form.Control
+          as="select"
+          value={qty}
+          onChange={(e) => setQty(e.target.value)}
+        >
+          {[...Array(product.countInStock).keys()].map((x) => (
+            <option key={x + 1} value={x + 1}>
+              {x + 1}
+            </option>
+          ))}
+        </Form.Control>
+      );
+    } else {
+      console.log(" IS LOOSE ORDER so return UI for that" + orderTypeSelected);
+      return (
+        <ButtonGroup
+          style={{ size: "small" }}
+          className="small outlined button group"
+          aria-label="small outlined button group"
+        >
+          {<Button onClick={handleDecrement}>-</Button>}
+          {<Button disabled>{counter}</Button>}
+          <Button onClick={handleIncrement}>+</Button>
+        </ButtonGroup>
+      );
+    }
+  };
 
   const currentCBHandler = (orderTypeValue) => {
-    console.log("Order Type Selected :" + orderTypeValue);
-    // orderInput = orderTypeValue === "loose" ? looseBtnGroup : bulkTextField;
-    orderInput = orderTypeValue === "loose" ? <h3>Loose</h3> : <h3>Bulk</h3>;
-    console.log(orderInput);
+    // console.log("Order Type Selected :" + orderTypeValue);
+    orderTypeSelected = orderTypeValue;
+    setOrderTypeSelected(...orderTypeSelected, orderTypeSelected);
+    console.log(
+      "orderTypeValue :" +
+        orderTypeValue +
+        " orderTypeSelected : " +
+        orderTypeSelected
+    );
+
+    setIsBulkOrder(orderTypeValue === "bulk" ? true : false);
+    console.log(
+      "is Order Type Bulk ? " +
+        isBulkOrder +
+        ", orderTypeValue: " +
+        orderTypeValue
+    );
   };
 
   return (
     <>
       <BulkLooseRadioGroup parentCB={currentCBHandler} />
-      {orderInput}
       <Row>
-        <Col md={6}>
+        <Col md={3}>
           <Image src={product.image} alt={product.name} fluid />
         </Col>
         <Col md={3}>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h3>
-                {product.name}
-                <div>{orderInput}</div>
-              </h3>
+              <h3>{product.name}</h3>
             </ListGroup.Item>
             <ListGroup.Item>
               <Rating
@@ -124,8 +141,7 @@ const ProductDetailsScreen = (prd) => {
             <ListGroup.Item>Description: {product.description}</ListGroup.Item>
           </ListGroup>
         </Col>
-        <Col md={3}>{orderInput}</Col>
-        <Col md={3}>
+        <Col md={6}>
           {/* <Card> */}
           <ListGroup variant="flush">
             <ListGroup.Item>
@@ -150,32 +166,9 @@ const ProductDetailsScreen = (prd) => {
             {product.countInStock > 0 && (
               <ListGroup.Item>
                 <Col>Qty</Col>
-                <Col>
-                  <Form.Control
-                    as="select"
-                    value={qty}
-                    onChange={(e) => setQty(e.target.value)}
-                  >
-                    {[...Array(product.countInStock).keys()].map((x) => (
-                      <option key={x + 1} value={x + 1}>
-                        {x + 1}
-                      </option>
-                    ))}
-                  </Form.Control>
-                </Col>
-                <Col>
-                  <ButtonGroup
-                    size="small"
-                    aria-label="small outlined button group"
-                  >
-                    {<Button onClick={handleDecrement}>-</Button>}
-                    {<Button disabled>{counter}</Button>}
-                    <Button onClick={handleIncrement}>+</Button>
-                  </ButtonGroup>
-                </Col>
+                <Col>{renderQtyUI(isBulkOrder, qty)}</Col>
               </ListGroup.Item>
             )}
-
             <ListGroup.Item>
               <Button
                 onClick={addToCartHandler}

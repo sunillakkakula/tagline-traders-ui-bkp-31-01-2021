@@ -47,15 +47,31 @@ const BulkLooseRadioGroup = ({ parentCB }) => {
                 aria-label="orderType"
                 name="orderType"
                 value={value}
-                disableelevation
                 onChange={handleChange}
               >
                 <div
-                  style={{ top: "50%", right: 0 }}
+                  style={{
+                    top: "50%",
+                    right: 0,
+                    // color: "#26A541",
+                    // fontSize: "1.25rem",
+                    // fontFamily: "Raleway",
+                    // fontWeight: "500",
+                    // lineHeight: "1.6",
+                    // letterSpacing: "0.0075em",
+                  }}
                   className="position-absolute mid-right"
                 >
                   <FormControlLabel
                     value="bulk"
+                    style={{
+                      color: "#26A541",
+                      fontSize: "0.75rem",
+                      fontFamily: "Raleway",
+                      fontWeight: "300",
+                      lineHeight: "1.6",
+                      letterSpacing: "0.0075em",
+                    }}
                     control={<Radio />}
                     label="Bulk"
                   />

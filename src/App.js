@@ -22,16 +22,21 @@ import SubMenuHeader from "./components/SubMenuHeader";
 import { ThemeProvider } from "@material-ui/core";
 import theme from "./components/Theme";
 import DashboardScreen from "./screens/DashboardScreen";
+import MegaMenu from "./components/MegaMenu";
+import MUIMenuTest from "./components/controls/MUIMenuTest";
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
+      {/* <MegaMenu /> */}
+      {/* <Header />
+      <SubMenuHeader /> */}
+      {/* <MUIMenuTest /> */}
       <Router>
+        {/* <MegaMenu /> */}
         <Header />
-        <Container>
-          <SubMenuHeader />
-        </Container>
-
+        <SubMenuHeader />
+        {/* <MUIMenuTest />  */}
         <main className="py-3">
           <Container>
             <Route path="/order/:id" component={OrderScreen} />

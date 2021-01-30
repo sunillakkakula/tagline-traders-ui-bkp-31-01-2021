@@ -75,12 +75,10 @@ const Product = ({ product }) => {
         </Card.Body>
       </Card>
       <Popup
-        title="Ordering Bulk / Loose ?"
+        title="Order Type"
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >
-        {/* <AddProductForm></AddProductForm> */}
-        {/* <ProductScreen /> */}
         <ProductDetailsScreen product={product}></ProductDetailsScreen>
       </Popup>
     </>

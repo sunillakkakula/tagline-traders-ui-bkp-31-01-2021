@@ -22,7 +22,7 @@ const MainCarousel = (props) => {
   ];
 
   return (
-    <Carousel timeout="4" style={{ marginTop: "1rem" }}>
+    <Carousel autoPlay style={{ marginTop: "5rem" }} indicators>
       {items.map((item, i) => (
         <Item key={i} item={item} />
       ))}
